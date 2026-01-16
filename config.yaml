@@ -1,0 +1,12 @@
+model:
+  type: linear_regression
+  params:
+    fit_intercept: true
+
+data:
+  path: data/Dataset.csv
+  target_column: Profit
+
+evaluation:
+  test_size: 0.2
+  random_state: 42
