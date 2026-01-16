@@ -4,7 +4,7 @@ model:
     fit_intercept: true
 
 data:
-  path: data/Dataset.csv
+  path: Data/Dataset.csv
   target_column: Profit
 
 evaluation:

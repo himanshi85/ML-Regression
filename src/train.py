@@ -17,7 +17,7 @@ def load_config():
 
 
 def load_dataset(config):
-    data_cfg = config["data"]
+    data_cfg = config["Data"]
     data_path = BASE_DIR / data_cfg["path"]
 
     df = pd.read_csv(data_path)
