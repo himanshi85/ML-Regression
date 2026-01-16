@@ -5,8 +5,6 @@ from sklearn.metrics import mean_squared_error, r2_score
 import yaml
 from pathlib import Path
 
-
-# Resolve project root
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -17,8 +15,15 @@ def load_config():
 
 
 def load_dataset(config):
-    data_cfg = config["Data"]
+    data_cfg = config["data"]  
+
     data_path = BASE_DIR / data_cfg["path"]
+
+    print("Dataset path:", data_path)
+    print("Dataset exists:", data_path.exists())
+
+    if not data_path.exists():
+        raise FileNotFoundError(f"Dataset not found at {data_path}")
 
     df = pd.read_csv(data_path)
 
@@ -36,7 +41,7 @@ def train_and_evaluate(X, y, config):
         X,
         y,
         test_size=eval_cfg["test_size"],
-        random_state=eval_cfg["random_state"]
+        random_state=eval_cfg["random_state"],
     )
 
     model_cfg = config["model"]
